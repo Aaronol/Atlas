@@ -1,0 +1,150 @@
+@prefix map: <#> .
+@prefix db: <> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
+	d2rq:jdbcDSN "jdbc:mysql://106.15.195.248:3306/atlas";
+	d2rq:username "root";
+	d2rq:password "Wadxq19960303@";
+	jdbc:autoReconnect "true";
+	jdbc:zeroDateTimeBehavior "convertToNull";
+	.
+
+# Table crop
+map:crop a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "crop/@@crop.id@@";
+	d2rq:class :crop;
+	d2rq:classDefinitionLabel "crop";
+	.
+map:crop__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crop;
+	d2rq:property rdfs:label;
+	d2rq:pattern "crop #@@crop.id@@";
+	.
+map:crop_id a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crop;
+	d2rq:property :crop_id;
+	d2rq:propertyDefinitionLabel "crop id";
+	d2rq:column "crop.id";
+	d2rq:datatype xsd:integer;
+	.
+map:crop_name a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crop;
+	d2rq:property :crop_name;
+	d2rq:propertyDefinitionLabel "crop name";
+	d2rq:column "crop.name";
+	.
+map:crop_classify a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crop;
+	d2rq:property :crop_classify;
+	d2rq:propertyDefinitionLabel "crop classify";
+	d2rq:column "crop.classify";
+	.
+map:crop_division a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:crop;
+	d2rq:property :crop_division;
+	d2rq:propertyDefinitionLabel "crop division";
+	d2rq:column "crop.division";
+	.
+
+# Table crop_to_diseases (n:m)
+map:crop_to_diseases__link a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:diseases;
+	d2rq:property :sicked;
+	d2rq:refersToClassMap map:crop;
+	d2rq:join "crop_to_diseases.diseasesid => diseases.id";
+	d2rq:join "crop_to_diseases.cropid => crop.id";
+	.
+
+# Table crop_to_pest (n:m)
+map:crop_to_pest__link a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:pest;
+	d2rq:property :eated;
+	d2rq:refersToClassMap map:crop;
+	d2rq:join "crop_to_pest.pestid => pest.id";
+	d2rq:join "crop_to_pest.cropid => crop.id";
+	.
+
+# Table diseases
+map:diseases a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "diseases/@@diseases.id@@";
+	d2rq:class :diseases;
+	d2rq:classDefinitionLabel "diseases";
+	.
+map:diseases__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:diseases;
+	d2rq:property rdfs:label;
+	d2rq:pattern "diseases #@@diseases.id@@";
+	.
+map:diseases_id a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:diseases;
+	d2rq:property :diseases_id;
+	d2rq:propertyDefinitionLabel "diseases id";
+	d2rq:column "diseases.id";
+	d2rq:datatype xsd:integer;
+	.
+map:diseases_name a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:diseases;
+	d2rq:property :diseases_name;
+	d2rq:propertyDefinitionLabel "diseases name";
+	d2rq:column "diseases.name";
+	.
+map:diseases_alias a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:diseases;
+	d2rq:property :diseases_alias;
+	d2rq:propertyDefinitionLabel "diseases alias";
+	d2rq:column "diseases.alias";
+	.
+map:diseases_remark a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:diseases;
+	d2rq:property :diseases_remark;
+	d2rq:propertyDefinitionLabel "diseases remark";
+	d2rq:column "diseases.remark";
+	.
+
+# Table pest
+map:pest a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "pest/@@pest.id@@";
+	d2rq:class :pest;
+	d2rq:classDefinitionLabel "pest";
+	.
+map:pest__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:pest;
+	d2rq:property rdfs:label;
+	d2rq:pattern "pest #@@pest.id@@";
+	.
+map:pest_id a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:pest;
+	d2rq:property :pest_id;
+	d2rq:propertyDefinitionLabel "pest id";
+	d2rq:column "pest.id";
+	d2rq:datatype xsd:integer;
+	.
+map:pest_name a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:pest;
+	d2rq:property :pest_name;
+	d2rq:propertyDefinitionLabel "pest name";
+	d2rq:column "pest.name";
+	.
+map:pest_alias a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:pest;
+	d2rq:property :pest_alias;
+	d2rq:propertyDefinitionLabel "pest alias";
+	d2rq:column "pest.alias";
+	.
+map:pest_remark a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:pest;
+	d2rq:property :pest_remark;
+	d2rq:propertyDefinitionLabel "pest remark";
+	d2rq:column "pest.remark";
+	.
+
