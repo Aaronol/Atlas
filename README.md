@@ -13,3 +13,7 @@ d2r-server.bat crop_pedigree.ttl
 
 - 农业病虫害信息云数据库
 http://cloud.sinoverse.cn/index_bch.htmlw
+# 页面展示
+![QQ图片20210407131844](https://user-images.githubusercontent.com/35592681/113814199-dc837c00-97a3-11eb-987d-70540e3a944a.png)
+
+
