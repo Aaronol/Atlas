@@ -1,16 +1,21 @@
 package com.example.atlas.model;
 
-import lombok.experimental.Accessors;
-
-@Accessors(chain = true)
 public class Crop {
     private Integer id;
 
+    private String croptype;
+
     private String name;
 
-    private String classify;
+    private String trainunit;
 
-    private String division;
+    private String origin;
+
+    private String remark;
+
+    private String height;
+
+    private String weight;
 
     public Integer getId() {
         return id;
@@ -18,6 +23,14 @@ public class Crop {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCroptype() {
+        return croptype;
+    }
+
+    public void setCroptype(String croptype) {
+        this.croptype = croptype == null ? null : croptype.trim();
     }
 
     public String getName() {
@@ -28,19 +41,43 @@ public class Crop {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getClassify() {
-        return classify;
+    public String getTrainunit() {
+        return trainunit;
     }
 
-    public void setClassify(String classify) {
-        this.classify = classify == null ? null : classify.trim();
+    public void setTrainunit(String trainunit) {
+        this.trainunit = trainunit == null ? null : trainunit.trim();
     }
 
-    public String getDivision() {
-        return division;
+    public String getOrigin() {
+        return origin;
     }
 
-    public void setDivision(String division) {
-        this.division = division == null ? null : division.trim();
+    public void setOrigin(String origin) {
+        this.origin = origin == null ? null : origin.trim();
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height == null ? null : height.trim();
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight == null ? null : weight.trim();
     }
 }

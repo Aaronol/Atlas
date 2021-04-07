@@ -2,81 +2,136 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.atlas.mapper.CropMapper" >
   <resultMap id="BaseResultMap" type="com.example.atlas.model.Crop" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="classify" property="classify" jdbcType="VARCHAR" />
-    <result column="division" property="division" jdbcType="VARCHAR" />
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CROPTYPE" property="croptype" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="TRAINUNIT" property="trainunit" jdbcType="VARCHAR" />
+    <result column="ORIGIN" property="origin" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="HEIGHT" property="height" jdbcType="VARCHAR" />
+    <result column="WEIGHT" property="weight" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, classify, division
+    ID, CROPTYPE, NAME, TRAINUNIT, ORIGIN, REMARK, HEIGHT, WEIGHT
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from crop
-    where id = #{id,jdbcType=INTEGER}
+    from CROP
+    where ID = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from crop
-    where id = #{id,jdbcType=INTEGER}
+    delete from CROP
+    where ID = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.example.atlas.model.Crop" >
-    insert into crop (id, name, classify, 
-      division)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{classify,jdbcType=VARCHAR}, 
-      #{division,jdbcType=VARCHAR})
+    insert into CROP (ID, CROPTYPE, NAME, 
+      TRAINUNIT, ORIGIN, REMARK, 
+      HEIGHT, WEIGHT)
+    values (#{id,jdbcType=INTEGER}, #{croptype,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{trainunit,jdbcType=VARCHAR}, #{origin,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{height,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.atlas.model.Crop" >
-    insert into crop
+    insert into CROP
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        id,
+        ID,
+      </if>
+      <if test="croptype != null" >
+        CROPTYPE,
       </if>
       <if test="name != null" >
-        name,
+        NAME,
       </if>
-      <if test="classify != null" >
-        classify,
+      <if test="trainunit != null" >
+        TRAINUNIT,
       </if>
-      <if test="division != null" >
-        division,
+      <if test="origin != null" >
+        ORIGIN,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="height != null" >
+        HEIGHT,
+      </if>
+      <if test="weight != null" >
+        WEIGHT,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="croptype != null" >
+        #{croptype,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="classify != null" >
-        #{classify,jdbcType=VARCHAR},
+      <if test="trainunit != null" >
+        #{trainunit,jdbcType=VARCHAR},
       </if>
-      <if test="division != null" >
-        #{division,jdbcType=VARCHAR},
+      <if test="origin != null" >
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.example.atlas.model.Crop" >
-    update crop
+    update CROP
     <set >
+      <if test="croptype != null" >
+        CROPTYPE = #{croptype,jdbcType=VARCHAR},
+      </if>
       <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+        NAME = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="classify != null" >
-        classify = #{classify,jdbcType=VARCHAR},
+      <if test="trainunit != null" >
+        TRAINUNIT = #{trainunit,jdbcType=VARCHAR},
       </if>
-      <if test="division != null" >
-        division = #{division,jdbcType=VARCHAR},
+      <if test="origin != null" >
+        ORIGIN = #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        HEIGHT = #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null" >
+        WEIGHT = #{weight,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.atlas.model.Crop" >
-    update crop
-    set name = #{name,jdbcType=VARCHAR},
-      classify = #{classify,jdbcType=VARCHAR},
-      division = #{division,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    update CROP
+    set CROPTYPE = #{croptype,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      TRAINUNIT = #{trainunit,jdbcType=VARCHAR},
+      ORIGIN = #{origin,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      HEIGHT = #{height,jdbcType=VARCHAR},
+      WEIGHT = #{weight,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectByCropName" resultType="com.example.atlas.model.Crop">
+    select * from CROP where NAME=#{name}
+  </select>
+  <select id="selectMaxId" resultType="int">
+    select ifnull(MAX(id), 0) from CROP
+  </select>
+  <select id="getAllCropData" resultType="com.example.atlas.model.Crop">
+    select * from CROP
+  </select>
 </mapper>

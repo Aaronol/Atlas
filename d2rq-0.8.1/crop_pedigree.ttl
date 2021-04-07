@@ -1,0 +1,115 @@
+@prefix map: <#> .
+@prefix db: <> .
+@prefix: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
+	d2rq:jdbcDSN "jdbc:mysql://106.15.195.248:3306/pedigree?useUnicode=true";
+	d2rq:username "root";
+	d2rq:password "Wadxq19960303@";
+	jdbc:autoReconnect "true";
+	jdbc:zeroDateTimeBehavior "convertToNull";
+	.
+
+# Table CROP
+map:CROP a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "CROP/@@CROP.ID@@";
+	d2rq:class :CROP;
+	d2rq:classDefinitionLabel "CROP";
+	.
+map:CROP__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property rdfs:label;
+	d2rq:pattern "CROP #@@CROP.ID@@";
+	.
+map:CROP_ID a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_ID;
+	d2rq:propertyDefinitionLabel "CROP ID";
+	d2rq:column "CROP.ID";
+	d2rq:datatype xsd:integer;
+	.
+map:CROP_CROPTYPE a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_CROPTYPE;
+	d2rq:propertyDefinitionLabel "CROP CROPTYPE";
+	d2rq:column "CROP.CROPTYPE";
+	.
+map:CROP_NAME a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_NAME;
+	d2rq:propertyDefinitionLabel "CROP NAME";
+	d2rq:column "CROP.NAME";
+	.
+map:CROP_TRAINUNIT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_TRAINUNIT;
+	d2rq:propertyDefinitionLabel "CROP TRAINUNIT";
+	d2rq:column "CROP.TRAINUNIT";
+	.
+map:CROP_ORIGIN a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_ORIGIN;
+	d2rq:propertyDefinitionLabel "CROP ORIGIN";
+	d2rq:column "CROP.ORIGIN";
+	.
+map:CROP_REMARK a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_REMARK;
+	d2rq:propertyDefinitionLabel "CROP REMARK";
+	d2rq:column "CROP.REMARK";
+	.
+map:CROP_HEIGHT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_HEIGHT;
+	d2rq:propertyDefinitionLabel "CROP HEIGHT";
+	d2rq:column "CROP.HEIGHT";
+	.
+map:CROP_WEIGHT a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:CROP;
+	d2rq:property :CROP_WEIGHT;
+	d2rq:propertyDefinitionLabel "CROP WEIGHT";
+	d2rq:column "CROP.WEIGHT";
+	.
+
+# Table CROP_PEDIGREE (n:m)
+map:CROP_PEDIGREE__link a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:PEDIGREE;
+	d2rq:property :parent;
+	d2rq:refersToClassMap map:CROP;
+	d2rq:join "CROP_PEDIGREE.PEDIGREE_ID => PEDIGREE.ID";
+	d2rq:join "CROP_PEDIGREE.CROP_ID => CROP.ID";
+	.
+
+# Table PEDIGREE
+map:PEDIGREE a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "PEDIGREE/@@PEDIGREE.ID@@";
+	d2rq:class :PEDIGREE;
+	d2rq:classDefinitionLabel "PEDIGREE";
+	.
+map:PEDIGREE__label a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:PEDIGREE;
+	d2rq:property rdfs:label;
+	d2rq:pattern "PEDIGREE #@@PEDIGREE.ID@@";
+	.
+map:PEDIGREE_ID a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:PEDIGREE;
+	d2rq:property :PEDIGREE_ID;
+	d2rq:propertyDefinitionLabel "PEDIGREE ID";
+	d2rq:column "PEDIGREE.ID";
+	d2rq:datatype xsd:integer;
+	.
+map:PEDIGREE_NAME a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:PEDIGREE;
+	d2rq:property :PEDIGREE_NAME;
+	d2rq:propertyDefinitionLabel "PEDIGREE NAME";
+	d2rq:column "PEDIGREE.NAME";
+	.
+
