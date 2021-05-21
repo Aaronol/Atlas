@@ -1,13 +1,16 @@
 package com.example.atlas.system.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 public class AskResult {
-    private static final int SUCCESS_CODE = 200;
+    private static final int SUCCESS_CODE = 0;
     private static final int FAILED_CODE = 104;
 
     private int code;
     private String msg;
+    private Integer count;
     private Object data;
     private Long stamp;
 
@@ -25,7 +28,20 @@ public class AskResult {
         ret.setMsg(msg);
         ret.setData(data);
         ret.setStamp(new Date().getTime());
+        ret.setCount(getDataLength(data));
         return ret;
+    }
+
+    private static Integer getDataLength(Object data) {
+        if (Collection.class.isAssignableFrom(data.getClass())) {
+            ArrayList<Object> arrayListData = (ArrayList<Object>) data;
+            return arrayListData.size();
+        } else if (data.getClass().isArray()) {
+            Object[] obj = (Object[]) data;
+            return obj.length;
+        } else {
+            return 0;
+        }
     }
 
     public static AskResult failed(String msg) {
@@ -40,6 +56,14 @@ public class AskResult {
         ret.setData("");
         ret.setStamp(new Date().getTime());
         return ret;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public int getCode() {
