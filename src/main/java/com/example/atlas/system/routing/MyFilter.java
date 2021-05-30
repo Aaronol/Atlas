@@ -14,7 +14,7 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         System.out.println(servletRequest.getParameter("name"));
         HttpServletRequest hrequest = (HttpServletRequest) servletRequest;
-        HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) servletResponse);
+         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) servletResponse);
         System.out.println(JSON.toJSONString(hrequest.getRequestURI()));
         if (StringUtils.equals(hrequest.getRequestURI(), "/login")) {
             wrapper.sendRedirect("/front/login");

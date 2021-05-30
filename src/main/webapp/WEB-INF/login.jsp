@@ -4,13 +4,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>XXXϵͳ</title>
-    <link rel="stylesheet" media="screen" href="../static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/reset.css"/>
-    <link rel="stylesheet" type="text/css" href="../static/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/modules/code.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/modules/laydate/default/laydate.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/modules/layer/default/layer.css">
+    <link rel="stylesheet" media="screen" href="../../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/modules/code.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/modules/laydate/default/laydate.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/modules/layer/default/layer.css">
 </head>
 <body>
 
@@ -50,11 +50,11 @@
 </div>
 
 <!-- scripts -->
-<script type="text/javascript" src="../static/js/layui.js"></script>
-<script src="../static/js/jquery-1.12.4.min.js"></script>
-<script src="../static/js/json2.js"></script>
-<script src="../static/js/particles.min.js"></script>
-<script src="../static/js/app.js"></script>
+<script type="text/javascript" src="../../static/js/layui.js"></script>
+<script src="../../static/js/jquery-1.12.4.min.js"></script>
+<script src="../../static/js/json2.js"></script>
+<script src="../../static/js/particles.min.js"></script>
+<script src="../../static/js/app.js"></script>
 
 <script type="text/javascript">
     function hasClass(elem, cls) {

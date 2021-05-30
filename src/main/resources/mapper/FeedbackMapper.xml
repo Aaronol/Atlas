@@ -1,106 +1,113 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.atlas.mapper.FeedbackMapper" >
-  <resultMap id="BaseResultMap" type="com.example.atlas.model.Feedback" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="updatedate" property="updatedate" jdbcType="TIMESTAMP" />
-    <result column="isread" property="isread" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, content, userid, username, updatedate, isread
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from FEEDBACK
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from FEEDBACK
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.example.atlas.model.Feedback" >
-    insert into FEEDBACK (id, content, userid, 
-      username, updatedate, isread
-      )
-    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
-      #{username,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, #{isread,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.example.atlas.model.Feedback" >
-    insert into FEEDBACK
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-      <if test="userid != null" >
-        userid,
-      </if>
-      <if test="username != null" >
-        username,
-      </if>
-      <if test="updatedate != null" >
-        updatedate,
-      </if>
-      <if test="isread != null" >
-        isread,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="updatedate != null" >
-        #{updatedate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isread != null" >
-        #{isread,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.atlas.model.Feedback" >
-    update FEEDBACK
-    <set >
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        userid = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="updatedate != null" >
-        updatedate = #{updatedate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="isread != null" >
-        isread = #{isread,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.atlas.model.Feedback" >
-    update FEEDBACK
-    set content = #{content,jdbcType=VARCHAR},
-      userid = #{userid,jdbcType=INTEGER},
-      username = #{username,jdbcType=VARCHAR},
-      updatedate = #{updatedate,jdbcType=TIMESTAMP},
-      isread = #{isread,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.example.atlas.mapper.FeedbackMapper">
+    <resultMap id="BaseResultMap" type="com.example.atlas.model.Feedback">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="userid" property="userid" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="updatedate" property="updatedate" jdbcType="TIMESTAMP"/>
+        <result column="isread" property="isread" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , content, userid, username, updatedate, isread
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from FEEDBACK
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from FEEDBACK
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.example.atlas.model.Feedback">
+        insert into FEEDBACK (id, content, userid,
+                              username, updatedate, isread)
+        values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER},
+                #{username,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, #{isread,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.example.atlas.model.Feedback">
+        insert into FEEDBACK
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="userid != null">
+                userid,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="updatedate != null">
+                updatedate,
+            </if>
+            <if test="isread != null">
+                isread,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedate != null">
+                #{updatedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isread != null">
+                #{isread,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.atlas.model.Feedback">
+        update FEEDBACK
+        <set>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="userid != null">
+                userid = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="updatedate != null">
+                updatedate = #{updatedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isread != null">
+                isread = #{isread,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.atlas.model.Feedback">
+        update FEEDBACK
+        set content    = #{content,jdbcType=VARCHAR},
+            userid     = #{userid,jdbcType=INTEGER},
+            username   = #{username,jdbcType=VARCHAR},
+            updatedate = #{updatedate,jdbcType=TIMESTAMP},
+            isread     = #{isread,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="getAllFeedBack" resultType="com.example.atlas.model.Feedback">
+        SELECT * FROM FEEDBACK WHERE 1=1
+        <if test="userid != null">
+            AND userid = #{userid}
+        </if>
+    </select>
+
 </mapper>

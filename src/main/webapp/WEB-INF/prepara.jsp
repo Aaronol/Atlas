@@ -9,22 +9,23 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="../static/css/layui.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/modules/code.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/modules/laydate/default/laydate.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/modules/layer/default/layer.css">
-    <script type="text/javascript" src="../static/js/layui.js"></script>
-    <script type="text/javascript" src="../static/js/json2.js"></script>
-    <script type="text/javascript" src="../static/js/jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/modules/code.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/modules/laydate/default/laydate.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/modules/layer/default/layer.css">
+
+    <script type="text/javascript" src="../../static/js/layui.js"></script>
+    <script type="text/javascript" src="../../static/js/json2.js"></script>
+    <script type="text/javascript" src="../../static/js/jquery-1.12.4.min.js"></script>
 </head>
 <body>
 <ul class="layui-nav layui-bg-green">
-    <li class="layui-nav-item"><a href="/static/main.jsp">数据准备</a></li>
-    <li class="layui-nav-item layui-this"><a href="/static/prepara.jsp">用户管理</a></li>
-    <li class="layui-nav-item"><a href="/static/feedback_main.jsp">反馈管理</a></li>
+    <li class="layui-nav-item"><a href="/front/main">数据准备</a></li>
+    <li class="layui-nav-item layui-this"><a href="/front/prepara">用户管理</a></li>
+    <li class="layui-nav-item"><a href="/front/main/feedback">反馈管理</a></li>
     <li class="layui-nav-item" style="margin-left: 65%">
-        <a href="/static/main.jsp"><img src="//t.cn/RCzsdCq" class="layui-nav-img">${sessionScope.user.username}</a>
+        <a href="/front/main"><img src="//t.cn/RCzsdCq" class="layui-nav-img">${sessionScope.user.username}</a>
     </li>
     <li class="layui-nav-item">
         <a href="javascript:layer.confirm('确实要退出登录吗?', function(index){location='/front/loginout';layer.close(index);});">退了</a>
@@ -33,7 +34,8 @@
 
 <div class="layui-col-md4">
     <div class="layui-card">
-        <div class="main-panel layui-card-header">用户管理</div>
+        <div class="main-panel layui-card-header" style="font-weight: bold;font-size: 20px;margin-left: 214px">用户管理
+        </div>
         <div class="layui-card-body">
             <label class="layui-form-label" style="text-align: left;width: 60px">用户姓名:</label>
             <input type="text" id="searchValue" name="title" style="width: 120px;display: inline" placeholder="姓名"
@@ -47,63 +49,68 @@
     </div>
     <table id="userdemo" lay-filter="userRow"></table>
 </div>
-<div class="layui-col-md8">
-    <div class="layui-card">
-        <div class="layui-card-body">
-            <div class="layui-form">
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="text-align: left;width: 100px">编码:</label>
-                    <input id="editCode" type="text" name="title" style="width: 200px" readonly="readonly"
-                           placeholder="编码"
-                           autocomplete="off"
-                           class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="text-align: left;width: 100px">姓名:</label>
-                    <input id="editName" type="text" name="title" style="width: 200px" placeholder="姓名"
-                           autocomplete="off"
-                           class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="text-align: left;width: 100px">密码:</label>
-                    <input id="password" type="text" name="title" style="width: 200px" placeholder="密码"
-                           autocomplete="off"
-                           class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="text-align: left;width: 100px">性别:</label>
-                    <div class="layui-input-inline" style="width:200px;">
-                        <select id="editSex" name="city">
-                            <option value="0">男</option>
-                            <option value="1">女</option>
-                        </select>
+<div class="layui-col-md4">
+    <div style="font-weight: bold;font-size: 20px;margin-left: 150px">用户信息</div>
+    <div class="layui-panel">
+        <div style="padding: 50px 30px;height: 455px">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="text-align: left;width: 100px">编码:</label>
+                            <input id="editCode" type="text" name="title" style="width: 200px" readonly="readonly"
+                                   placeholder="编码"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="text-align: left;width: 100px">用户名:</label>
+                            <input id="editName" type="text" name="title" style="width: 200px" placeholder="用户名"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="text-align: left;width: 100px">密码:</label>
+                            <input id="password" type="text" name="title" style="width: 200px" placeholder="密码"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="text-align: left;width: 100px">性别:</label>
+                            <div class="layui-input-inline" style="width:200px;">
+                                <select id="editSex" name="city">
+                                    <option value="0">男</option>
+                                    <option value="1">女</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="text-align: left;width: 100px">年龄:</label>
+                            <input id="editAge" type="text" name="title" style="width: 200px" placeholder="年龄"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="text-align: left;width: 100px">电话:</label>
+                            <input id="editPhoneno" type="text" name="title" style="width: 200px" placeholder="电话"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-form-item">
+                            <button type="button" style="margin-left: 60px" class="layui-btn layui-btn-normal"
+                                    onclick="saveUser()"
+                            >保存
+                            </button>
+                            <button type="button" style="margin-left: 60px" class="layui-btn layui-btn-primary"
+                                    onclick="clearBar()"
+                            >清空
+                            </button>
+                            <button type="button" style="margin-left: 60px" class="layui-btn layui-btn-danger"
+                                    onclick="deleteUser()"
+                            >删除
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="text-align: left;width: 100px">年龄:</label>
-                    <input id="editAge" type="text" name="title" style="width: 200px" placeholder="年龄"
-                           autocomplete="off"
-                           class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <label class="layui-form-label" style="text-align: left;width: 100px">电话:</label>
-                    <input id="editPhoneno" type="text" name="title" style="width: 200px" placeholder="电话"
-                           autocomplete="off"
-                           class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <button type="button" style="margin-left: 60px" class="layui-btn layui-btn-normal"
-                            onclick="saveUser()"
-                    >保存
-                    </button>
-                    <button type="button" style="margin-left: 60px" class="layui-btn layui-btn-primary"
-                            onclick="clearBar()"
-                    >清空
-                    </button>
-                    <button type="button" style="margin-left: 60px" class="layui-btn layui-btn-danger"
-                            onclick="deleteUser()"
-                    >删除
-                    </button>
                 </div>
             </div>
         </div>
@@ -168,7 +175,7 @@
         $.ajax({
             async: false,//同步
             cache: false,
-            url: "/font/addOrUpdateUser",
+            url: "/front/addOrUpdateUser",
             type: "post",
             datatype: 'json',
             contentType: 'application/json',
@@ -178,7 +185,8 @@
                 password: $("#password").val(),
                 sex: $("#editSex  option:selected").text(),
                 age: $("#editAge").val(),
-                phoneno: $("#editPhoneno").val()
+                phoneno: $("#editPhoneno").val(),
+                roleid: '1'
             }),
             error: function () {
                 layer.alert('保存失败!请检查网络并重试!');
@@ -194,11 +202,11 @@
 
     function newFile() {
         $(".layui-table-body tr").attr({"style": "background:#FFFFFF; color:#666666"});//其他tr恢复颜色
+        $("#editCode").val(null);
         clearBar();
     }
 
     function clearBar() {
-        $("#editCode").val(null);
         $("#editName").val('');
         $("#password").val('');
         $('#editSex').siblings("div.layui-form-select").find('dl').find('dd[lay-value=0]').click();
