@@ -38,7 +38,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">输入问题:</label>
         <div class="layui-input-inline">
-            <input type="question" name="数量" placeholder="请输入问题" autocomplete="off" style="width: 400px"
+            <input id="question" name="数量" placeholder="请输入问题" autocomplete="off" style="width: 400px"
                    class="layui-input">
         </div>
         <button class="layui-form-mid layui-btn" type="button" style="width: 100px;margin-left: 230px"  title="查询"

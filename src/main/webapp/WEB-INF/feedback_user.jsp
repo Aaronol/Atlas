@@ -80,7 +80,7 @@
         //第一个实例
         feedbackTable.render({
             id: 'feedbackTable',
-            where: {id: ${sessionScope.user.id}},
+            where: {userid: ${sessionScope.user.id}},
             elem: '#feedbackDemo'
             , height: 578
             , url: '/front/getAllFeedBack' //数据接口
@@ -139,7 +139,7 @@
     }
 
     function reLoadPage() {
-        feedbackTable.reload("feedbackTable", {id: ${sessionScope.user.id}});
+        feedbackTable.reload("feedbackTable", {userid: ${sessionScope.user.id}});
         newFeedback();
     }
 </script>
